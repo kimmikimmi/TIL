@@ -5,11 +5,11 @@
 <br />
 
 ## ADT
- [link](/Algorithm/data_structure/java/bitset/MyBitSet.java)
+ [link](/Algorithm/java/bitset/MyBitSet.java)
 <br />
 
 ## Simple Implementation
- [link](/Algorithm/data_structure/java/bitset/BitSetImpl.java)
+ [link](/Algorithm/java/bitset/BitSetImpl.java)
 <br />
 
 ## Library code example

@@ -1,17 +1,9 @@
 package bitset;
 
 import java.util.Arrays;
-import java.util.BitSet;
 
-public interface MyBitSet {
-    void set(int bitIndex);
 
-    void clear(int bitIndex);
-
-    boolean contains(int bitIndex);
-}
-
-class BitSetImpl implements MyBitSet {
+public class BitSetImpl implements MyBitSet {
     /*
     * BitSets are packed into arrays of "words."  Currently a word is
     * a long, which consists of 64 bits, requiring 6 address bits.
@@ -31,7 +23,6 @@ class BitSetImpl implements MyBitSet {
     private transient int wordsInUse = 0;
 
     public static void main(String[] args) {
-        System.out.println( (1L << 64) == 1L);
         MyBitSet bs = new BitSetImpl(10);
 
         bs.set(1);        
@@ -50,14 +41,6 @@ class BitSetImpl implements MyBitSet {
         System.out.println(bs.contains(10));
         System.out.println(bs.contains(2));
         System.out.println(bs.contains(11));
-
-
-        System.out.println("---");
-        long[] words = new long[2];
-        for (int i=0; i<120; i++) {
-            words[i/64] |= (1L << i);
-            System.out.println("words[" + i + "] = " +words[i/64]);
-        }
     }
 
     /**

@@ -1,5 +1,3 @@
-package bitset;
-
 public interface MyBitSet {
     void set(int bitIndex);
 

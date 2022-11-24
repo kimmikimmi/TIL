@@ -1,5 +1,3 @@
-package bitset;
-
 import java.util.Arrays;
 
 

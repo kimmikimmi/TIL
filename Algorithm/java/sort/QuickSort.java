@@ -25,6 +25,7 @@ public class QuickSort<K> {
                 temp = S[left];
                 S[left] = S[right];
                 S[right] = temp;
+
                 left++; right--;
             }
 
@@ -76,6 +77,34 @@ public class QuickSort<K> {
        }
     }
     
+    // [l, r] 을 정렬한다.
+    public void quickSort2(int[] arr, int l , int r) {
+        if (l < r) {
+            int q = partition(arr, l , r);
+            quickSort2(arr, l, q-1); 
+            quickSort2(arr, q+1, r); 
+        }
+    }
+
+    public int partition(int[] arr, int l , int r) {
+        int x = arr[r];
+        int i = l-1;
+        for (int j=l; j<r; j++) {
+            if (arr[j] < x) {
+                i++;
+                int tmp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = tmp; 
+            }
+        }
+
+        int tmp = arr[r];
+        arr[r] = arr[i+1];
+        arr[i+1] = tmp;
+        
+        return i+1;
+    }
+
     public static void main(String[] args) {
         Queue<Integer> queue = new LinkedList<>();
         queue.add(5);

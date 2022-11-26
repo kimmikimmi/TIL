@@ -26,7 +26,7 @@ public class BubbleSort {
         int[] arr = new int[]{5,4,3,1,2};
         SelectionSort.sort(arr);
         for (int e : arr) {
-            System.out.println(e);
+            System.out.print(e +"\t");
         }
    } 
 }

@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * 이미 정렬되어 있는 i 개짜리 배열에 하나의 원소를 삽입하여 정렬된 i+1 개의 배열을 만드는 과정을 반복한다.
  * 즉, arr[i]에 관심을 두는 시점에 arr[i:i-1]은 정렬이 되어있다. 
@@ -29,5 +27,4 @@ public class InsertionSort {
         InsertionSort.sort(arr);
         for (int e : arr) System.out.println(e);
     } 
-
 }

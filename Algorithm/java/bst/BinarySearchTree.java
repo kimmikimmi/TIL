@@ -23,19 +23,46 @@ class BinarySearchTree {
         }
     }
 
-    public TreeNode insert(TreeNode root, int val) {
+    public TreeNode rInsert(TreeNode root, int val) {
         if (root == null) {
             root = new TreeNode(val);
             return root;
         }
 
         if (val < root.value) {
-            root.left = insert(root.left, val);
+            root.left = rInsert(root.left, val);
         } else if (val > root.value){
-            root.right = insert(root.right, val);
+            root.right = rInsert(root.right, val);
         }
 
         return root; 
+    }
+
+    public void insert(TreeNode root, int val) {
+        TreeNode node = new TreeNode(val);
+
+        if (root == null) {
+            root = node;
+        } else {
+            TreeNode p = null; 
+            TreeNode tmp = root;
+            while (tmp != null) {
+                p = tmp;
+                if (val < tmp.value) {
+                    tmp = tmp.left;
+                } else if(val > tmp.value) {
+                    tmp = tmp.right;
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            }
+
+            if (val < p.value) {
+                p.left = node;
+            } else {
+                p.right = node;
+            }
+        }
     }
 
     public static void main(String[] args) {

@@ -38,7 +38,7 @@ class BinarySearchTree {
         return root; 
     }
 
-    public void insert(TreeNode root, int val) {
+    public TreeNode insert(TreeNode root, int val) {
         TreeNode node = new TreeNode(val);
 
         if (root == null) {
@@ -63,19 +63,59 @@ class BinarySearchTree {
                 p.right = node;
             }
         }
+        return root;
+    }
+
+    public TreeNode delete(TreeNode root, int v) {
+        if (root == null) {
+            return root;
+        }
+        // Find out the node to be deleted.
+        if (root.value == v) {
+            if (root.right == null && root.left == null) {
+                root = null;   
+            // case 2: has single child
+            } else if (root.right == null) {
+                root = root.left;
+            } else if (root.left == null) {
+                root = root.right;
+            // case 3: has two children
+            } else {
+                // 1. find left most child's value.  
+                // 2. put the valut into root, 
+                // 3. remove the node.
+                root.value = findLargestValueFromLeft(root.left);
+                root.left = delete(root.left, root.value);
+            }
+        } else if (root.value > v) {
+            root.left = delete(root.left, v);
+        } else {
+            root.right = delete(root.right, v);
+        }
+
+        return root;
+    }
+
+    private int findLargestValueFromLeft(TreeNode root) {
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root.value;
     }
 
     public static void main(String[] args) {
         TreeNode root = null;
  
         BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(root, 2);
-        bst.insert(root, 3);
-        bst.insert(root, 1);
+        root = bst.insert(root, 2);
+        root = bst.insert(root, 3);
+        root = bst.insert(root, 1);
 
         assert bst.search(root, 1) != null; 
         assert bst.search(root, 2) != null; 
         assert bst.search(root, 3) != null; 
-        assert bst.search(root, 4) == null; 
+
+        bst.delete(root, 2);
+        assert bst.search(root, 2) == null; 
     }
 }

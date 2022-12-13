@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "Algorithm/data_structure/java",
-        "Algorithm/java/sort"
+        "Algorithm/java/sort",
+        "Algorithm/java/bst",
+        "Algorithm/java/union"
     ]
 }

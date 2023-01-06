@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
-    private final Map<Integer, List<Integer>> adjacencyList;
+    private final Map<Integer, List<Pair>> adjacencyList;
     
     private final int V;
     private int[] dist;
@@ -39,17 +39,17 @@ public class Dijkstra {
 
        boolean[] visited = new boolean[V];
        int count = 0;
-       while (!pq.isEmpty() && count < V) {
-           Pair u = pq.poll();
+       while (!pq.isEmpty() && count < V) { // this loop + inner for loop -> E
+           Pair u = pq.poll(); // logV
            visited[u.v] = true;
 
            if (!adjacencyList.containsKey(u.v)) {
                continue; // this node is an island.
            }
 
-           for (Integer nei : adjacencyList.get(u.v)) {
-               if (!visited[u] && u.dist + d[u.v] < d[nei]) {
-                   d[nei] = u.dist + d[u.v];
+           for (Pair nei : adjacencyList.get(u.v)) {
+               if (!visited[u] && nei.weight + d[u.v] < d[nei]) {
+                   d[nei] = nei.weight + d[u.v];
                    pq.add(new Pair(d[nei], nei));
                }
            }

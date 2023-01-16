@@ -1,4 +1,4 @@
-class Problem1446 {
+class Problem1424 {
     public int[] findDiagonalOrder(List<List<Integer>> nums) {
       Map<Integer, List<Integer>> map = new HashMap<>();
       int maxSum = 0;

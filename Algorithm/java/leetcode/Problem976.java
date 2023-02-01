@@ -1,20 +1,13 @@
 public class Problem976 {
-    public int[] sortedSquares(int[] nums) {
-        int [] result = new int[nums.length];
-        int i = 0;
-        int j = nums.length - 1;
-        int ptr = nums.length-1;
-        while (i <= j) {
-            if (nums[i] * nums[i] >= nums[j] * nums[j]) {
-                result[ptr] = nums[i] * nums[i];
-                i++;
-            } else {
-                result[ptr] = nums[j] * nums[j]; 
-                j--;
-            }
-            ptr--;
+    public int largestPerimeter(int[] nums) {
+       Arrays.sort(nums);
 
-        }
-        return result; 
+       for (int i=nums.length - 1; i > 1; i--) {
+           if (nums[i] < nums[i-1] + nums[i-2]) {
+               return nums[i] + nums[i-1] + nums[i-2];
+           }
+       }
+
+       return 0; 
     }
 }

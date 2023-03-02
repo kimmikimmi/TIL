@@ -4,5 +4,6 @@
         "Algorithm/java/sort",
         "Algorithm/java/bst",
         "Algorithm/java/leetcode"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

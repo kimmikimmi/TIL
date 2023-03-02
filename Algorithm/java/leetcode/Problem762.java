@@ -11,6 +11,7 @@ public class Problem762 {
             return sum;
         }
     
+        // Can be optimized
         private int calculateOneBits(int n) {
           int cnt = 0;
           int dec = n;
